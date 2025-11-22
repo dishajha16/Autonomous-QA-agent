@@ -89,7 +89,7 @@ st.markdown("""
 
 
 # Backend URL
-BACKEND_URL = "https://backend-for-qa-agent.onrender.com"
+BACKEND_URL = "https://backend-for-qa-agent-1.onrender.com"
 
 # -------------------- HEADER --------------------
 st.markdown("""
