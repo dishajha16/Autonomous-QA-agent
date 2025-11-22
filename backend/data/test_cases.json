@@ -1,0 +1,396 @@
+{
+  "test_cases": [
+    {
+      "test_id": "TC_001",
+      "title": "Verify successful payment with all valid data",
+      "related_requirements": [
+        "R1",
+        "R3.1",
+        "R3.2",
+        "R3.3",
+        "R3.4",
+        "R3.5"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "The message 'Payment Successful!' is displayed on the screen."
+    },
+    {
+      "test_id": "TC_002",
+      "title": "Verify validation when 'emailInput' is left empty",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.4",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Leave the 'emailInput' field empty.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating email is mandatory is displayed below the 'emailInput' field."
+    },
+    {
+      "test_id": "TC_003",
+      "title": "Verify validation when 'nameInput' is left empty",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.4",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Leave the 'nameInput' field empty.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating name is mandatory is displayed below the 'nameInput' field."
+    },
+    {
+      "test_id": "TC_004",
+      "title": "Verify validation when 'cardNumber' is left empty",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.4",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Leave the 'cardNumber' field empty.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating card number is mandatory is displayed below the 'cardNumber' field."
+    },
+    {
+      "test_id": "TC_005",
+      "title": "Verify validation when 'expiryDate' is left empty",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.4",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Leave the 'expiryDate' field empty.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating expiry date is mandatory is displayed below the 'expiryDate' field."
+    },
+    {
+      "test_id": "TC_006",
+      "title": "Verify validation when 'cvvInput' is left empty",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.4",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Leave the 'cvvInput' field empty.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating CVV is mandatory is displayed below the 'cvvInput' field."
+    },
+    {
+      "test_id": "TC_007",
+      "title": "Verify validation when 'emailInput' has an invalid format",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.1",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter an invalid email format 'invalid-email' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating invalid email format is displayed below the 'emailInput' field."
+    },
+    {
+      "test_id": "TC_008",
+      "title": "Verify validation when 'cardNumber' has less than 16 digits",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.2",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter card number '12345' (less than 16 digits) into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating card number must be 16 digits is displayed below the 'cardNumber' field."
+    },
+    {
+      "test_id": "TC_009",
+      "title": "Verify validation when 'cardNumber' has more than 16 digits",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.2",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter card number '12345678901234567' (more than 16 digits) into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating card number must be 16 digits is displayed below the 'cardNumber' field."
+    },
+    {
+      "test_id": "TC_010",
+      "title": "Verify validation when 'cardNumber' contains non-numeric characters",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.2",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter card number '1234ABCD5678EFGH' (non-numeric characters) into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter valid 3-digit numeric CVV '123' into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating card number must be numeric is displayed below the 'cardNumber' field."
+    },
+    {
+      "test_id": "TC_011",
+      "title": "Verify validation when 'cvvInput' has less than 3 digits",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.3",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter CVV '12' (less than 3 digits) into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating CVV must be exactly 3 digits is displayed below the 'cvvInput' field."
+    },
+    {
+      "test_id": "TC_012",
+      "title": "Verify validation when 'cvvInput' has more than 3 digits",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.3",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter CVV '1234' (more than 3 digits) into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating CVV must be exactly 3 digits is displayed below the 'cvvInput' field."
+    },
+    {
+      "test_id": "TC_013",
+      "title": "Verify validation when 'cvvInput' contains non-numeric characters",
+      "related_requirements": [
+        "R2.2",
+        "R2.3",
+        "R3.3",
+        "R3.6"
+      ],
+      "used_elements": [
+        "emailInput",
+        "nameInput",
+        "cardNumber",
+        "expiryDate",
+        "cvvInput",
+        "payNowButton"
+      ],
+      "preconditions": [
+        "User must be on the checkout page"
+      ],
+      "steps": [
+        "Enter valid email 'test@example.com' into the 'emailInput' field.",
+        "Enter valid name 'John Doe' into the 'nameInput' field.",
+        "Enter valid 16-digit numeric card number '1234567890123456' into the 'cardNumber' field.",
+        "Enter a valid expiry date (e.g., '2025-12') into the 'expiryDate' field.",
+        "Enter CVV 'abc' (non-numeric characters) into the 'cvvInput' field.",
+        "Click on the 'Pay Now' button."
+      ],
+      "expected_result": "An error message indicating CVV must be numeric is displayed below the 'cvvInput' field."
+    }
+  ]
+}

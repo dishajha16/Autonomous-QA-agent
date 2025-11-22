@@ -1,0 +1,57 @@
+{
+  "requirements": [
+    "Mock Payment API Document\nRequired fields:\n- email\n- name\n- card_number\n- expiry_date\n- cvv\n\nExpected 200 OK response:\n{\n  \"status\": \"success\",\n  \"message\": \"Payment Successful!\"\n}\n",
+    "UI/UX Guidelines for Checkout\n1. All input fields should be clearly labeled.\n2. The checkout form must guide user errors.\n3. Error messages must be displayed below fields.\n4. Button must be labeled \u201cPay Now\u201d.\n",
+    "Product Checkout Process Specification\n1. Users must enter a valid email.\n2. Only valid card numbers (16-digit numeric) should be accepted.\n3. CVV must be exactly 3 digits.\n4. All fields except coupon are mandatory.\n5. Successful payment should display \u201cPayment Successful!\u201d.\n6. Invalid data should trigger appropriate validation messages.\n"
+  ],
+  "ui_elements": [
+    {
+      "tag": "input",
+      "id": "emailInput",
+      "name": null,
+      "type": "email",
+      "text": "",
+      "class": null
+    },
+    {
+      "tag": "input",
+      "id": "nameInput",
+      "name": null,
+      "type": "text",
+      "text": "",
+      "class": null
+    },
+    {
+      "tag": "input",
+      "id": "cardNumber",
+      "name": null,
+      "type": "text",
+      "text": "",
+      "class": null
+    },
+    {
+      "tag": "input",
+      "id": "expiryDate",
+      "name": null,
+      "type": "month",
+      "text": "",
+      "class": null
+    },
+    {
+      "tag": "input",
+      "id": "cvvInput",
+      "name": null,
+      "type": "text",
+      "text": "",
+      "class": null
+    },
+    {
+      "tag": "button",
+      "id": "payNowButton",
+      "name": null,
+      "type": null,
+      "text": "Pay Now",
+      "class": null
+    }
+  ]
+}

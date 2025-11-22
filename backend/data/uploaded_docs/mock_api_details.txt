@@ -1,0 +1,13 @@
+Mock Payment API Document
+Required fields:
+- email
+- name
+- card_number
+- expiry_date
+- cvv
+
+Expected 200 OK response:
+{
+  "status": "success",
+  "message": "Payment Successful!"
+}

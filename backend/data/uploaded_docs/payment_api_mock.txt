@@ -1,0 +1,12 @@
+Mock Payment API Document
+
+Endpoint: POST /processPayment
+Required Fields:
+- email (string)
+- cardNumber (string)
+- expiryDate (string)
+- cvv (string)
+
+Response:
+- 200 OK { "message": "Payment Processed" }
+- 400 Bad Request { "error": "Invalid payment data" }
