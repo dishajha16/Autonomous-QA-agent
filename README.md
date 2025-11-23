@@ -63,8 +63,8 @@ autonomous-qa-agent/
 │   ├── checkout.html
 │   ├── product_specification.txt
 │   ├── ui_guidelines.txt
-│   ├── mock_api_details.txt
-│   └── business_rules.txt
+│   └── mock_api_details.txt
+│ 
 │
 ├── backend/data/             # Auto-generated after execution
 │   ├── knowledge.json
@@ -72,7 +72,7 @@ autonomous-qa-agent/
 │   └── generated_scripts.py
 │
 ├── requirements.txt
-├── .env.example
+├── .env
 └── README.md
 ```
 
@@ -83,10 +83,9 @@ autonomous-qa-agent/
 ### 1️⃣ Clone and Setup Environment
 
 ```bash
-git clone <your-repo-url>
-cd autonomous-qa-agent
+git clone https://github.com/dishajha16/Autonomous-QA-agent/edit
 python -m venv venv
-venv\Scripts\activate   # Windows
+./venv/scripts/activate   # Windows
 pip install -r requirements.txt
 ```
 
@@ -105,10 +104,8 @@ GEMINI_API_KEY=your_gemini_key_here
 ### Start Backend (FastAPI)
 
 ```bash
-uvicorn backend.main:app --reload
+uvicorn backend.main:app 
 ```
-
-API Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ### Start Frontend (Streamlit)
 
@@ -191,10 +188,6 @@ python backend/data/generated_scripts.py
 * CI/CD based automated report generation
 * Test execution analytics dashboard
 * Multi-page HTML support
-
----
-
-## 🎉 Final Notes
 
 This project demonstrates application of **AI in software testing automation**, successfully bridging:
 🧠 AI reasoning → 🧪 QA validation → ⚙ Code automation
