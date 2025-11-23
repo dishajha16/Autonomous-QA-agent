@@ -8,10 +8,9 @@ st.set_page_config(
     layout="wide"
 )
 
-
 st.markdown("""
 <style>
-    /* Import a cute font */
+    /* Import cute fonts */
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap');
 
     /* Background Gradient */
@@ -19,7 +18,7 @@ st.markdown("""
         background: linear-gradient(to bottom right, #fff0f5, #e6e6fa);
     }
 
-    /* Titles and Headers */
+    /* Titles */
     h1 {
         font-family: 'Pacifico', cursive;
         color: #ff69b4 !important;
@@ -30,16 +29,73 @@ st.markdown("""
         color: #ba55d3 !important;
     }
 
-    /* FIX GENERAL TEXT VISIBILITY */
+    /* GENERAL TEXT VISIBILITY */
     p, label, .stMarkdown, .stWrite, .stText, li, div {
         font-family: 'Poppins', sans-serif;
         color: #333 !important;
     }
 
-    /* Customizing the Buttons */
+    /* ---------------------------------------------------- */
+    /* 🛠 FIX: JSON & CODE BLOCK VISIBILITY */
+    /* ---------------------------------------------------- */
+    
+    /* Force JSON and Code blocks to have a LIGHT background */
+    .stJson, .stCode, [data-testid="stJson"] {
+        background-color: #ffffff !important; /* White background */
+        border-radius: 10px;
+        padding: 15px;
+        border: 2px solid #ffb7b2;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Force text inside JSON to be dark and readable */
+    .stJson div, .stJson span, .stJson p, [data-testid="stJson"] div, [data-testid="stJson"] span {
+        color: #2c3e50 !important; /* Dark Blue-Grey text */
+        background-color: transparent !important;
+        font-family: 'Courier New', monospace !important;
+    }
+
+    /* ---------------------------------------------------- */
+    /* 🛠 FIX: MULTI-SELECT DROPDOWN VISIBILITY */
+    /* ---------------------------------------------------- */
+    
+    /* The Clickable Input Box */
+    .stMultiSelect div[data-baseweb="select"] > div {
+        background-color: white !important;
+        border: 2px solid #ffb7b2 !important;
+        border-radius: 10px !important;
+        color: #333 !important;
+    }
+
+    /* The Dropdown Menu List */
+    ul[data-baseweb="menu"] {
+        background-color: #fff0f5 !important;
+        border: 2px solid #ffb7b2 !important;
+    }
+
+    /* The Individual Options */
+    li[data-baseweb="option"] {
+        color: #333 !important;
+        background-color: transparent !important;
+    }
+    
+    li[data-baseweb="option"]:hover {
+        background-color: #ffb7b2 !important;
+        color: white !important;
+    }
+
+    /* The "Selected" Chips */
+    span[data-baseweb="tag"] {
+        background-color: #ff69b4 !important;
+        color: white !important;
+    }
+
+    /* ---------------------------------------------------- */
+
+    /* BUTTON STYLING */
     .stButton>button {
         background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-        color: white !important; /* Keep button text white */
+        color: white !important;
         border-radius: 25px;
         border: none;
         font-weight: bold;
@@ -48,37 +104,25 @@ st.markdown("""
     }
     .stButton>button:hover {
         transform: scale(1.05);
-        color: white !important;
         background: linear-gradient(45deg, #fad0c4, #ff9a9e);
     }
 
-    /* STYLING THE FILE UPLOADER & FIXING INVISIBLE FILENAMES */
+    /* FILE UPLOADER FIX */
     .stFileUploader {
         background-color: rgba(255, 255, 255, 0.5);
         padding: 20px;
         border-radius: 15px;
         border: 2px dashed #ffb7b2;
     }
-    
-    /* This specific block forces the uploaded filenames to be dark */
     [data-testid="stFileUploaderUploadedFile"] {
         color: #333 !important;
-        background-color: #fff !important; /* White background behind the filename for contrast */
+        background-color: #fff !important;
         border: 1px solid #ffd1dc;
     }
-    /* Force generic text inside uploader (like 'Limit 200MB') to be dark */
     .stFileUploader small, .stFileUploader span {
         color: #555 !important;
     }
 
-    /* Code blocks background */
-    .stCode {
-        background-color: #fff !important;
-        border-radius: 10px;
-        border: 1px solid #ffd1dc;
-    }
-    
-    /* Horizontal Line Styling */
     hr {
         border-top: 2px dashed #ffb7b2;
         margin-top: 30px;
@@ -87,9 +131,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-
 # Backend URL
-BACKEND_URL = "https://backend-for-qa-agent-1.onrender.com"
+BACKEND_URL = "http://127.0.0.1:8000"
 
 # -------------------- HEADER --------------------
 st.markdown("""
@@ -135,22 +178,44 @@ if st.button("📝 Generate Test Cases", use_container_width=True):
     else:
         with st.spinner("🧠 Brainstorming test cases... 💭"):
             response = requests.post(f"{BACKEND_URL}/generate-test-cases")
+
         if response.status_code == 200:
             st.success("✔ Perfect! Test cases generated successfully. 💖")
             response_json = response.json()
-            if response.status_code == 200 and "test_cases" in response_json:
-                st.session_state["test_cases"] = response_json["test_cases"]["test_cases"]
-            else:
-                st.error("❌ Error generating test cases.")
-        else:
-            st.error("❌ Error generating test cases.")
 
+            # 🔍 Safely extract test cases
+            test_cases_data = response_json.get("test_cases")
+            if isinstance(test_cases_data, dict) and "test_cases" in test_cases_data:
+                st.session_state["test_cases"] = test_cases_data["test_cases"]
+            elif isinstance(test_cases_data, list):
+                st.session_state["test_cases"] = test_cases_data
+            else:
+                st.error("🚨 Unexpected response format! Cannot extract test cases.")
+                st.write("Debug →", response_json)
+                st.stop()
+
+        else:
+            st.error("❌ Failed to generate test cases.")
+
+
+# 🟡 Show dropdown only if valid test cases exist
 if "test_cases" in st.session_state:
-    st.markdown("#### 📌 Pick your test cases:")
-    st.session_state["selected_test_ids"] = st.multiselect("Select the ones you want:", [tc["test_id"] for tc in st.session_state["test_cases"]])
-    st.info(f"✨ Selected Test Case IDs: **{st.session_state['selected_test_ids']}**")
+    test_cases = st.session_state["test_cases"]
+
+    if not isinstance(test_cases, list) or not all(isinstance(tc, dict) for tc in test_cases):
+        st.error("🚨 Test case data is invalid. Please regenerate.")
+        st.write("Debug →", test_cases)
+
+    else:
+        st.markdown("#### 📌 Pick your test cases:")
+        st.session_state["selected_test_ids"] = st.multiselect(
+            "Select the ones you want:",
+            [tc["test_id"] for tc in test_cases]  # ✔ Now safe
+        )
+        st.info(f"✨ Selected Test Case IDs: **{st.session_state['selected_test_ids']}**")
 
 st.write("---")
+
 
 # -------------------- STEP 3 --------------------
 st.markdown("### 🦋 Step 3: Generate Selenium Scripts")
