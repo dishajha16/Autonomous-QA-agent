@@ -1,5 +1,0 @@
-UI/UX Guidelines for Checkout
-1. All input fields should be clearly labeled.
-2. The checkout form must guide user errors.
-3. Error messages must be displayed below fields.
-4. Button must be labeled “Pay Now”.
